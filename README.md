@@ -1,0 +1,1 @@
+This is a simple weather app with a modern UI. Created using React on the frontend to render the UI components. Express was used to consume the OpenWeatherMap API and serves a JSON response to the React frontend.
