@@ -86,7 +86,7 @@ class App extends React.Component {
         humidity: `${weatherData.main.humidity}%`,
         image: this.weatherIcons[weatherData.weather[0].icon],
         showDefaultCard: false,
-        error: false
+        error: false,
       });
     } catch (err) {
       this.setState({
@@ -150,7 +150,8 @@ class App extends React.Component {
     });
   }
 
-  handleClick() {
+  handleClick(e) {
+    e.preventDefault();
     this.getWeather();
     this.setDates();
   }
@@ -170,25 +171,25 @@ class App extends React.Component {
     } else {
       displayExtraInfo = "block";
     }
-    
+
     return (
       <div className="App">
         <header className="app-header">
           <h1>WeatherToGo</h1>
           <div className="search-div">
-            <form>
+            {/* Use onSubmit={() => function}} else it will fire
+          the function everytime it re-renders*/}
+            <form onSubmit={(e) => this.handleClick(e)}>
               <input
                 type="text"
                 onChange={this.handleChange}
                 placeholder="Search for a City"
               ></input>
+              <button className="search-btn" type="submit">
+                Search
+              </button>
             </form>
-            {/* ALWAYS use onclick={() => function}} else it will fire
-          the function everytime it re-renders*/}
           </div>
-          <button className="search-btn" onClick={() => this.handleClick()}>
-            Search
-          </button>
         </header>
         <h2 style={{ display: displayError }}>
           Cannot find the city you are looking for :(
