@@ -12,7 +12,7 @@ import drizzleNight from "./animated/rainy-5.svg";
 import thunder from "./animated/thunder.svg";
 import snow from "./animated/snowy-6.svg";
 import "./App.css";
-import Card from "./components/card";
+import CardCurrent from "./components/cardCurrent";
 import CardDaily from "./components/cardDaily";
 
 class App extends React.Component {
@@ -156,6 +156,7 @@ class App extends React.Component {
     this.setDates();
   }
 
+
   render() {
     let displayError = "none";
     let displayExtraInfo = "none";
@@ -183,7 +184,7 @@ class App extends React.Component {
               <input
                 type="text"
                 onChange={this.handleChange}
-                placeholder="Search for a City"
+                placeholder="Search for a City (eg. City, Country)"
               ></input>
               <button className="search-btn" type="submit">
                 Search
@@ -196,7 +197,7 @@ class App extends React.Component {
             Cannot find the city you are looking for :(
           </h2>
           <h2>Current Weather</h2>
-          <Card
+          <CardCurrent
             search={this.state.search}
             name={this.state.name}
             country={this.state.country}
