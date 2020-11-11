@@ -191,43 +191,47 @@ class App extends React.Component {
             </form>
           </div>
         </header>
-        <h2 style={{ display: displayError }}>
-          Cannot find the city you are looking for :(
-        </h2>
-        <h2>Current Weather</h2>
-        <Card
-          search={this.state.search}
-          name={this.state.name}
-          country={this.state.country}
-          weather={this.state.weather}
-          weatherDesc={this.state.weatherDesc}
-          temp={this.state.temp}
-          feelsLike={this.state.feelsLike}
-          humidity={this.state.humidity}
-          pop={Math.round(parseInt(this.state.weatherHourly[0].pop * 100))}
-          image={this.state.image}
-        />
-        <h2 className="daily-title" style={{ display: displayExtraInfo }}>
-          Daily Weather for Next 7 Days
-        </h2>
-        <div className="daily">
-          {/* Can get index of map iteration through second paramater */}
-          {this.state.weatherDaily.map((day, index) => (
-            <CardDaily
-              date={this.state.dates[index]}
-              name={this.state.name}
-              country={this.state.country}
-              weather={day.weather[0].main}
-              weatherDesc={day.weather[0].description}
-              temp={`${Math.round(parseInt(day.temp.day) - 273.15)}°C`}
-              feelsLike={`${Math.round(
-                parseInt(day.feels_like.day) - 273.15
-              )}°C`}
-              humidity={`${day.humidity}%`}
-              pop={Math.round(parseInt(day.pop * 100))}
-              image={this.weatherIcons[day.weather[0].icon]}
-            />
-          ))}
+        <div className="current-div">
+          <h2 style={{ display: displayError }}>
+            Cannot find the city you are looking for :(
+          </h2>
+          <h2>Current Weather</h2>
+          <Card
+            search={this.state.search}
+            name={this.state.name}
+            country={this.state.country}
+            weather={this.state.weather}
+            weatherDesc={this.state.weatherDesc}
+            temp={this.state.temp}
+            feelsLike={this.state.feelsLike}
+            humidity={this.state.humidity}
+            pop={Math.round(parseInt(this.state.weatherHourly[0].pop * 100))}
+            image={this.state.image}
+          />
+        </div>
+        <div className="daily-div" style={{ display: displayExtraInfo }}>
+          <h2 className="daily-title" style={{ display: displayExtraInfo }}>
+            Daily Weather for Next 7 Days
+          </h2>
+          <div className="daily">
+            {/* Can get index of map iteration through second paramater */}
+            {this.state.weatherDaily.map((day, index) => (
+              <CardDaily
+                date={this.state.dates[index]}
+                name={this.state.name}
+                country={this.state.country}
+                weather={day.weather[0].main}
+                weatherDesc={day.weather[0].description}
+                temp={`${Math.round(parseInt(day.temp.day) - 273.15)}°C`}
+                feelsLike={`${Math.round(
+                  parseInt(day.feels_like.day) - 273.15
+                )}°C`}
+                humidity={`${day.humidity}%`}
+                pop={Math.round(parseInt(day.pop * 100))}
+                image={this.weatherIcons[day.weather[0].icon]}
+              />
+            ))}
+          </div>
         </div>
         {/*
         <h2>Hourly Weather for Next 48 Hours</h2>
